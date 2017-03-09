@@ -1,4 +1,4 @@
-# 從零開始 JavaScript Stack
+# JavaScript Stack 從零開始
 
 [![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
 [![Release](https://img.shields.io/github/release/verekia/js-stack-from-scratch.svg?style=flat-square)](https://github.com/verekia/js-stack-from-scratch/releases)
@@ -16,7 +16,7 @@
 [![Webpack](/img/webpack-padded-90.png)](https://webpack.github.io/)
 [![Bootstrap](/img/bootstrap-padded-90.png)](http://getbootstrap.com/)
 
-歡迎來到現代 JavaScript 技術 Stack 教學: **JavaScript Stack 從零開始**.
+歡迎來到現代 JavaScript Stack 教學: **JavaScript Stack 從零開始**.
 (譯註：此為繁體中文翻譯，我會盡力更新，可到原作者的 [repo](https://github.com/verekia/js-stack-from-scratch) 查看最新版本)
 
 > 🎉 **這是此教學的第二版，相較 2016 年的釋出，有不少重大更新，看看[更改日誌](/CHANGELOG.md)!**
