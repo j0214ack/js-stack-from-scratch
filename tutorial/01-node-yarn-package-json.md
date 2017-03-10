@@ -8,7 +8,7 @@
 
 > 💡 **[Node.js](https://nodejs.org/)** 是一個 JavaScript 執行環境。通常最常使用在後端開發，但也可作為平常的腳本語言使用。而在前端開發的情境中， Node.js 會用來做許多工作像是 linting (譯注：一套檢查程式文法與風格的軟體)、測試、組裝檔案等等。
 
-在這個教學裡，我們會用 Node 做幾乎所有事情，所以你將會需要他的。請前往 [download page](https://nodejs.org/en/download/current/) 下載 **macOS** 或 **Windows** 的執行檔。如果你使用 Linux 系統請查看 [package manager installations page](https://nodejs.org/en/download/package-manager/) 。
+在這個教學裡，幾乎所有事都是透過 Node 完成的。請前往 [download page](https://nodejs.org/en/download/current/) 下載 **macOS** 或 **Windows** 的執行檔。如果你使用 Linux 系統請查看 [package manager installations page](https://nodejs.org/en/download/package-manager/) 。
 
 例如：
 在 **Ubuntu / Debian** ，你需要執行下列的指令來安裝 Node:
@@ -18,11 +18,13 @@ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-你需要任何版本大於 > 6.5.0 的 Node.js
+你需要版本大於 > 6.5.0 的 Node.js
 
 ## NVM
 
-如果你已經安裝了 Node ，或者你需要更高的彈性，請安裝 NVM ([Node Version Manager](https://github.com/creationix/nvm))，並且讓 NVM 安裝(譯注：`nvm install`)最新版本的 Node ，並且切換 (譯注：`nvm use`) 到該版本。
+如果你已經安裝了 Node ，或者想要有更高的彈性，請安裝 NVM ([Node Version Manager](https://github.com/creationix/nvm))，透過 NVM 安裝最新版本的 Node ，並切換到該版本。
+
+（譯注： `nvm install [version]` 安裝、 `nvm use [version]` 切換。）
 
 ## NPM
 
@@ -64,7 +66,7 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 
 🏁 在資料夾裡執行 `node .`（`index.js` 是 Node 預設在資料夾中會查看的檔案），我們應該就會看到 "Hello world" 顯示在終端機內。
 
-**備註**：看見 🏁 賽車旗表情符號了嗎？每當你達到一個 **檢查點** 就會看見它。我們有時候會一口氣作出大量的更動，而你所撰寫的程式碼或許會無法執行直到你達到下一個檢查點。
+**備註**：看見 🏁 賽車旗表情符號了嗎？你每達到一個 **檢查點** 時就會看見它。有時候我們會一口氣作出大量的更動，期間你所撰寫的程式碼可能會無法執行，直到達到下一個檢查點。
 
 ## `start` 腳本
 
