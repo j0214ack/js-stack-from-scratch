@@ -1,39 +1,41 @@
-# 01 - Node, Yarn, and `package.json`
+# 01 - Node, Yarn, 以及 `package.json`
 
-Code for this chapter available [here](https://github.com/verekia/js-stack-walkthrough/tree/master/01-node-yarn-package-json).
+本章的程式碼可以在 [這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/01-node-yarn-package-json) 取得
 
-In this section we will set up Node, Yarn, a basic `package.json` file, and try a package.
+在這一部分，我們將會把 Node, Yarn 還有基本的的 `package.json` 檔案設定好，並且試著使用一個套件
 
 ## Node
 
-> 💡 **[Node.js](https://nodejs.org/)** is a JavaScript runtime environment. It is mostly used for Back-End development, but also for general scripting. In the context of Front-End development, it can be used to perform a whole bunch of tasks like linting, testing, and assembling files.
+> 💡 **[Node.js](https://nodejs.org/)** 是一個 JavaScript 執行環境。通常最常使用在後端開發，但也可作為平常的腳本語言使用。而在前端開發的情境中， Node.js 會用來做許多工作像是 linting (譯注：一套檢查程式文法與風格的軟體)、測試、組裝檔案等等。
 
-We will use Node for basically everything in this tutorial, so you're going to need it. Head to the [download page](https://nodejs.org/en/download/current/) for **macOS** or **Windows** binaries, or the [package manager installations page](https://nodejs.org/en/download/package-manager/) for Linux distributions.
+在這個教學裡，我們會用 Node 做幾乎所有事情，所以你將會需要他的。請前往 [download page](https://nodejs.org/en/download/current/) 下載 **macOS** 或 **Windows** 的執行檔。如果你使用 Linux 系統請查看 [package manager installations page](https://nodejs.org/en/download/package-manager/) 。
 
-For instance, on **Ubuntu / Debian**, you would run the following commands to install Node:
+例如：
+在 **Ubuntu / Debian** ，你需要執行下列的指令來安裝 Node:
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-You want any version of Node > 6.5.0.
+你需要任何版本大於 > 6.5.0 的 Node.js
 
 ## NVM
 
-If Node is already installed, or if you want more flexibility, install NVM ([Node Version Manager](https://github.com/creationix/nvm)), and make NVM install and use the latest version of Node for you.
+如果你已經安裝了 Node ，或者你需要更高的彈性，請安裝 NVM ([Node Version Manager](https://github.com/creationix/nvm))，並且讓 NVM 安裝(譯注：`nvm install`)最新版本的 Node ，並且切換 (譯注：`nvm use`) 到該版本。
 
 ## NPM
 
-NPM is the default package manager for Node. It is automatically installed alongside with Node. Package managers are used to install and manage packages (modules of code that you or someone else wrote). We are going to use a lot of packages in this tutorial, but we'll use Yarn, another package manager.
+NPM 是 Node 預設的套件管理員。在你安裝 Node 的時候它就會自動安裝。套件管理員的用途是安裝並且管理套件 （套件是由你或其他人撰寫的一組一組的程式碼）。在這個教學裡，我們將會用到非常多的套件，但我們會使用 Yarn ，那是另外一個套件管理員。
+
 
 ## Yarn
 
-> 💡 **[Yarn](https://yarnpkg.com/)** is a Node.js package manager which is much faster than NPM, has offline support, and fetches dependencies [more predictably](https://yarnpkg.com/en/docs/yarn-lock).
+> 💡 **[Yarn](https://yarnpkg.com/)** 是一個 Node.js 套件管理員，比 NPM 快速，支援離線使用，而且能夠 [更可預測地取得](https://yarnpkg.com/en/docs/yarn-lock) 相依套件。
 
-Since it [came out](https://code.facebook.com/posts/1840075619545360) in October 2016, it received a very quick adoption and may soon become the package manager of choice of the JavaScript community. If you want to stick to NPM you can simply replace all `yarn add` and `yarn add --dev` commands of this tutorial by `npm install --save` and `npm install --save-dev`.
+自從 Yarn 在 2016 年十月 [釋出](https://code.facebook.com/posts/1840075619545360) 以來， JavaScript 社群很快地就採納了這個選項。如果你想要繼續使用 NPM ，你只要將本教學裡所有的 `yarn add` 和 `yarn add --dev` 換成 `npm install --save` 和 `npm install --save-dev` 即可。
 
-Install Yarn by following the [instructions](https://yarnpkg.com/en/docs/install) for your OS. I would recommend using the **Installation Script** from the *Alternatives* tab if you are on macOS or Unix, to [avoid](https://github.com/yarnpkg/yarn/issues/1505) relying on other package managers:
+從 [說明頁面](https://yarnpkg.com/en/docs/install) 找到你的作業系統，並依照指示安裝。如果你的系統是 macOS 或 Unix ，我建議使用在 *Alternatives* 分頁裡的 **Installation Script** 來安裝，以 [避免](https://github.com/yarnpkg/yarn/issues/1505) 需要依賴在其他套件管理員的情形發生。
 
 ```sh
 curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -41,12 +43,12 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 
 ## `package.json`
 
-> 💡 **[package.json](https://yarnpkg.com/en/docs/package-json)** is the file used to describe and configure your JavaScript project. It contains general information (your project name, version, contributors, license, etc), configuration options for tools you use, and even a section to run *tasks*.
+> 💡 **[package.json](https://yarnpkg.com/en/docs/package-json)** 是一個用來描述並且設置你的 JavaScript 專案的檔案。裡面會有一般性的資訊（你的專案名稱、版本、貢獻者、版權執照等等）、你所使用的工具的設置選項、甚至有一個部分可以設置想要執行的 *tasks*。
 
-- Create a new folder to work in, and `cd` in it.
-- Run `yarn init` and answer the questions (`yarn init -y` to skip all questions), to generate a `package.json` file automatically.
+- 建立一個新工作資料夾，並且 `cd` 到裡面
+- 執行 `yarn init` 並且回答畫面上的問題（用 `yarn init -y` 跳過所有問題），如此就可以自動產生出一個 `package.json` 檔案
 
-Here is the basic `package.json` I'll use in this tutorial:
+以下是我將會在本教學裡使用的基本 `package.json`：
 
 ```json
 {
@@ -58,17 +60,17 @@ Here is the basic `package.json` I'll use in this tutorial:
 
 ## Hello World
 
-- Create an `index.js` file containing `console.log('Hello world')`
+- 創造一個 `index.js` 檔案，內含 `console.log('Hello world')`
 
-🏁 Run `node .` in this folder (`index.js` is the default file Node looks for in a folder). It should print "Hello world".
+🏁 在資料夾裡執行 `node .`（`index.js` 是 Node 預設在資料夾中會查看的檔案），我們應該就會看到 "Hello world" 顯示在終端機內。
 
-**Note**: See that 🏁 racing flag emoji? I will use it every time you reach a **checkpoint**. We are sometimes going to make a lot of changes in a row, and your code may not work until you reach the next checkpoint.
+**備註**：看見 🏁 賽車旗表情符號了嗎？每當你達到一個 **檢查點** 就會看見它。我們有時候會一口氣作出大量的更動，而你所撰寫的程式碼或許會無法執行直到你達到下一個檢查點。
 
-## `start` script
+## `start` 腳本
 
-Running `node .` to execute our program is a bit too low-level. We are going to use an NPM/Yarn script to trigger the execution of that code instead. That will give us a nice abstraction to be able to always use `yarn start`, even when our program gets more complicated.
+使用 `node .` 來執行我們的程式，有點太低階了。我們將會改用 NPM/Yarn 腳本來觸發程式碼執行。這會給我們一個很棒的抽象層，讓我們可以用永遠用 `yarn start` 來執行程式，即使我們的程式在將來變得非常複雜。
 
-- In `package.json`, add a `scripts` object like so:
+- 在 `package.json` 裡，增加一個 `scripts` 物件：
 
 ```json
 {
@@ -81,42 +83,42 @@ Running `node .` to execute our program is a bit too low-level. We are going to 
 }
 ```
 
-`start` is the name we give to the *task* that will run our program. We are going to create a lot of different tasks in this `scripts` object throughout this tutorial. `start` is typically the name given to the default task of an application. Some other standard task names are `stop` and `test`.
+`start` 是我們給予的 *task* 名稱，這個 *task* 會執行我們的程式。在這個教學裡，我們將會在 `scripts` 物件製作非常多不同的 tasks 。 `start` 通常是一個應用程式的預設指令的名字。其他標準的 task 名稱像是 `stop` 和 `test`。
 
-`package.json` must be a valid JSON file, which means that you cannot have trailing commas. So be careful when editing manually your `package.json` file.
+`package.json` 必須要是合法的 JSON 檔案，也就是說你不能夠有留在尾巴的逗號。當你手動編輯你的 `package.json` 檔案的時候請特別注意。
 
-🏁 Run `yarn start`. It should print `Hello world`.
+🏁 執行 `yarn start`。終端機應該會印出 `Hello world`。
 
-## Git and `.gitignore`
+## Git 與 `.gitignore`
 
-- Initialize a Git repository with `git init`
+- 用 `git init` 初始化你的 Git repository
 
-- Create a `.gitignore` file and add the following to it:
+- 製作一個 `.gitignore` 檔案，並且加入下列內容到檔案裡：
 
 ```gitignore
 .DS_Store
 /*.log
 ```
 
-`.DS_Store` files are auto-generated macOS files that you should never have in your repository.
+`.DS_Store` 檔案是 macOS 自動生成的檔案，你永遠不該把它放到你的 repository 之中。
 
-`npm-debug.log` and `yarn-error.log` are files that are created when your package manager encounters an error, we don't want them versioned in our repository.
+`npm-debug.log` 和 `yarn-error.log` 是你的套件管理員遇到錯誤時會製作的檔案，我們不希望這些東西出現在我們的版本控制之中。
 
 ## Installing and using a package
 
-In this section we will install and use a package. A "package" is simply a piece of code that someone else wrote, and that you can use in your own code. It can be anything. Here, we're going to try a package that helps you manipulate colors for instance.
+在這個部分我們會安裝並且使用一個套件。一個「套件」其實就是某些人寫的一段程式碼，而你可以在你自己的程式當中使用它們。它們可以是任何東西。以下範例裡，我們將試著用一個套件，幫助你操作顏色。
 
-- Install the community-made package called `color` by running `yarn add color`
+- 用 `yarn add color` 安裝社群製作的 `color` 套件。
 
-Open `package.json` to see how Yarn automatically added `color` in  `dependencies`.
+打開你的 `package.json` ，在 `dependencies` 裡查看 Yarn 自動幫你增加的 `color` 套件
 
-A `node_modules` folder has been created to store the package.
+你會注意到一個 `node_modules` 資料夾在你的專案資料夾裡產生了，這是拿來儲存你安裝的套件的資料夾。
 
-- Add `node_modules/` to your `.gitignore`
+- 將 `node_modules/` 加到你的 `.gitignore` 之中。
 
-You will also notice that a `yarn.lock` file got generated by Yarn. You should commit this file to your repository, as it will ensure that everyone in your team uses the same version of your packages. If you're sticking to NPM instead of Yarn, the equivalent of this file is the *shrinkwrap*.
+同時你也會注意到 Yarn 產生了一個 `yanr.lock` 檔案。你應該要將這個檔案加入到版本控制當中，這個檔案可以確保你的團隊都使用同樣的套件版本。如果你使用的是 NPM ，有著同樣功能的檔案叫做 *shrinkwrap*。
 
-- Write the following to your `index.js` file:
+- 將下列的程式碼寫進你的 `index.js` 檔案中：
 
 ```js
 const color = require('color')
@@ -126,22 +128,22 @@ const redHexa = color({ r: 255, g: 0, b: 0 }).hex()
 console.log(redHexa)
 ```
 
-🏁 Run `yarn start`. It should print `#FF0000`.
+🏁 執行 `yarn start`。 你的終端機應該會印出 `#FF0000`。
 
-Congratulations, you installed and used a package!
+恭喜你！你剛剛安裝並且使用了一個套件！
 
-`color` is just used in this section to teach you how to use a simple package. We won't need it anymore, so you can uninstall it:
+`color` 只是在本段落示範用的簡單套件。我們以後不會再需要它了，所以你可以移除它：
 
-- Run `yarn remove color`
+- 執行 `yarn remove color`
 
-## Two kinds of dependencies
+## 兩種套件相依
 
-There are two kinds of package dependencies, `"dependencies"` and `"devDependencies"`:
+總共有兩種套件相依： `"dependencies"` 和 `"devDependencies"`。
 
-**Dependencies** are libraries you need for your application to function (React, Redux, Lodash, jQuery, etc). You install them with `yarn add [package]`.
+**Dependencies** 是你在應用程式或函數當中會需要用到的相依函式庫。透過 `yarn add [套件名稱]` 安裝。
 
-**Dev Dependencies** are libraries used during development or to build your application (Webpack, SASS, linters, testing frameworks, etc). You install those with `yarn add --dev [package]`.
+**Dev Dependencies** 是你在開發的時候會用到的函式庫，例如： Webpack、SASS、linters、測試框架等等。透過 `yarn add --dev [套件名稱]` 安裝。
 
-Next section: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](02-babel-es6-eslint-flow-jest-husky.md#readme)
+下一段落: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](02-babel-es6-eslint-flow-jest-husky.md#readme)
 
-Back to the [table of contents](https://github.com/verekia/js-stack-from-scratch#table-of-contents).
+回到 [內容目錄](https://github.com/verekia/js-stack-from-scratch#內容目錄).
