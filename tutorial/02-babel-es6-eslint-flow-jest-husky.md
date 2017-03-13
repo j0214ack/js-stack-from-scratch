@@ -1,33 +1,38 @@
-# 02 - Babel, ES6, ESLint, Flow, Jest, and Husky
+# 02 - Babel, ES6, ESLint, Flow, Jest, 與 Husky
 
-Code for this chapter available [here](https://github.com/verekia/js-stack-walkthrough/tree/master/02-babel-es6-eslint-flow-jest-husky).
+本章的程式碼可以在 [這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/02-babel-es6-eslint-flow-jest-husky) 取得。
 
-We're now going to use some ES6 syntax, which is a great improvement over the "old" ES5 syntax. All browsers and JS environments understand ES5 well, but not ES6. That's where a tool called Babel comes to the rescue!
+我們將會使用一些 ES6 語法，它比起「老舊」的 ES5 語法進步了許多。但是所有的瀏覽器與 JS 環境都能很好地支援 ES5 ，而非 ES6 。這就是我們需要使用 Babel 工具的時機了。
 
 ## Babel
 
-> 💡 **[Babel](https://babeljs.io/)** is a compiler that transforms ES6 code (and other things like React's JSX syntax) into ES5 code. It is very modular and can be used in tons of different [environments](https://babeljs.io/docs/setup/). It is by far the preferred ES5 compiler of the React community.
+> 💡 **[Babel](https://babeljs.io/)** 是一個將 ES6 程式碼轉譯成 ES5 的編譯器。它非常的模組化，而且可以在各種不同的[環境](https://babeljs.io/docs/setup/)中運作。目前在 React 社群中，Babel 是最被接受的 ES5 編譯器。
 
-- Move your `index.js` into a new `src` folder. This is where you will write your ES6 code. Remove the previous `color`-related code in `index.js`, and replace it with a simple:
+- 將 `index.js` 移動到一個新的 `src` 資料夾。你會在這個資料夾裡撰寫你的 ES6 程式碼。將與 `color` 有關的程式碼從 `index.js` 中移除，並且將內容換成：
 
 ```js
 const str = 'ES6'
 console.log(`Hello ${str}`)
 ```
 
-We're using a *template string* here, which is an ES6 feature that lets us inject variables directly inside the string without concatenation using `${}`. Note that template strings are created using **backquotes**.
+我們在這裡使用了 *template string* 。這是 ES6 的特色，讓我們可以在字串裡面透過 `${}` 植入變數，而不用經由字串串接。請注意， *template string* 使用的是 **反引號**。
 
-- Run `yarn add --dev babel-cli` to install the CLI interface for Babel.
+- 執行 `yarn add --dev babel-cli` 安裝 Babel 的 CLI。
+（譯注： CLI 是 command-line interface 或 command language interpreter ， 也就是在終端機的介面。）
 
-Babel CLI comes with [two executables](https://babeljs.io/docs/usage/cli/): `babel`, which compiles ES6 files into new ES5 files, and `babel-node`, which you can use to replace your call to the `node` binary and execute ES6 files directly on the fly. `babel-node` is great for development but it is heavy and not meant for production. In this chapter we are going to use `babel-node` to set up the development environment, and in the next one we'll use `babel` to build ES5 files for production.
+Babel CLI 共有[兩個可執行指令](https://babeljs.io/docs/usage/cli/)：
+1. `babel` ， `babel` 將 ES6 檔案編譯成新的 ES5 檔案。
+2. `babel-node` ， `babel-node` 可以取代 `node` 執行檔，讓你直接執行 ES6 檔案。 `babel-node` 很非常適合在開發環境中使用，但對正式環境來說太過笨重。
+在本章節我們將會使用 `babel-node` 設置開發環境，而在下一個章節我們會使用 `babel` 來製作 ES5 檔案到正式環境。
 
-- In `package.json`, in your `start` script, replace `node .` by `babel-node src` (`index.js` is the default file Node looks for, which is why we can omit `index.js`).
+- 在 `package.json` 中的 `start` 腳本，將 `node .` 替換成 `babel-node src` 。(`index.js` 是 Node 預設查看的檔案，所以我們可以將 `index.js` 省略。）
 
-If you try to run `yarn start` now, it should print the correct output, but Babel is not actually doing anything. That's because we didn't give it any information about which transformations we want to apply. The only reason it prints the right output is because Node natively understands ES6 without Babel's help. Some browsers or older versions of Node would not be so successful though!
+如果你現在試著嘗試執行 `yarn start`，應該能夠印出正確的結果。但 Babel 實際上沒有做任何事，因為我們沒有給它想要套用哪些轉換的資訊。他能夠印出正確結果的唯一理由是因為 Node 不用透過 Babel 就能夠理解 ES6。在某些瀏覽器上或比較舊的 Node 版本裡，可能就不會這麼順利了！
 
-- Run `yarn add --dev babel-preset-env` to install a Babel preset package called `env`, which contains configurations for the most recent ECMAScript features supported by Babel.
+- 執行 `yarn add --dev babel-preset-env` 來安裝 Babel 預設套件 `env` ，這個套件包含了最近期的 Babel 支援的 ECMAScript 語法設定。
 
-- Create a `.babelrc` file at the root of your project, which is a JSON file for your Babel configuration. Write the following to it to make Babel use the `env` preset:
+- 在你的專案的根目錄中創造 `.babelrc` 檔案，這是一個 JSON 格式的檔案，作為你的 Babel 設置檔。在當中撰寫以下內容，好讓 Babel 使用 `env` 預設：
+
 
 ```json
 {
@@ -37,15 +42,15 @@ If you try to run `yarn start` now, it should print the correct output, but Babe
 }
 ```
 
-🏁 `yarn start` should still work, but it's actually doing something now. We can't really tell if it is though, since we're using `babel-node` to interpret ES6 code on the fly. You'll soon have a proof that your ES6 code is actually transformed when you reach the [ES6 modules syntax](#the-es6-modules-syntax) section of this chapter.
+🏁 `yarn start` 應該依舊能夠運作。但現在 Babel 真的有在做點事情了。但我們不太能確定是不是真的，因為我們正在使用 `babel-node` 來運行 ES6 。但很快地，當到本章的 [ES6 模組語法](#ES6 模組語法) 段落時，我們就能看到ES6 程式碼有被改變的證據。
 
 ## ES6
 
-> 💡 **[ES6](http://es6-features.org/)**: The most significant improvement of the JavaScript language. There are too many ES6 features to list them here but typical ES6 code uses classes with `class`, `const` and `let`, template strings, and arrow functions (`(text) => { console.log(text) }`).
+> 💡 **[ES6](http://es6-features.org/)**: 是 JavaScript 語言最顯著的改進。 ES6 的特色多到無法一一列舉，但典型的 ES6 程式碼會：使用 `class` 來創造類別、 `const` 、 `let` 、 template string 、以及箭頭函式 (`(text) => { console.log(text) }`)。
 
-### Creating an ES6 class
+### 創造一個 ES6 類別
 
-- Create a new file, `src/dog.js`, containing the following ES6 class:
+- 創造一個新檔案叫做 `src/dog.js` ，裡面包含下列類別：
 
 ```js
 class Dog {
@@ -61,9 +66,9 @@ class Dog {
 module.exports = Dog
 ```
 
-It should not look surprising to you if you've done OOP in the past in any language. It's relatively recent for JavaScript though. The class is exposed to the outside world via the `module.exports` assignment.
+如果你曾經在其他語言用過物件導向，這個語法應該不會看起來太意外。但對 JavaScript 來說，這是一個相對較新的語法。類別透過 `module.exports` 向外公開。
 
-In `src/index.js`, write the following:
+在 `src/index.js` 裡，撰寫以下程式碼：
 
 ```js
 const Dog = require('./dog')
@@ -73,23 +78,27 @@ const toby = new Dog('Toby')
 console.log(toby.bark())
 ```
 
-As you can see, unlike the community-made package `color` that we used before, when we require one of our files, we use `./` in the `require()`.
+如你所見，不像我們之前用的社群撰寫的 `color` 套件，當使用我們自己的檔案時，會在 `require()` 裡使用 `./`
 
-🏁 Run `yarn start` and it should print "Wah wah, I am Toby".
 
-### The ES6 modules syntax
+🏁  執行 `yarn start` ，應該會印出：「 Wah wah, I am Toby 」。
 
-Here we simply replace `const Dog = require('./dog')` by `import Dog from './dog'`, which is the newer ES6 modules syntax (as opposed to "CommonJS" modules syntax). It is currently not natively supported by NodeJS, so this is your proof that Babel processes those ES6 files correctly.
 
-In `dog.js`, we also replace `module.exports = Dog` by `export default Dog`
+### ES6 模組語法
 
-🏁 `yarn start` should still print "Wah wah, I am Toby".
+將 `const Dog = require('./dog')` 更換成 `import Dog from './dog'`。
+`import` 是新的 ES6 模組語法。（ `require()` 則是 「 CommonJS」 模組的語法。）這個語法沒有被 NodeJS 直接支援，所以這將會是 Babel 有正確處理 ES6 檔案的證據。
+
+同樣地，在 `dog.js` 裡，將 `module.exports = Dog` 換成 `export default Dog` 。
+
+🏁 `yarn start` 應該依舊會顯示「 Wah wah, I am Toby 」。
 
 ## ESLint
 
-> 💡 **[ESLint](http://eslint.org)** is the linter of choice for ES6 code. A linter gives you recommendations about code formatting, which enforces style consistency in your code, and code you share with your team. It's also a great way to learn about JavaScript by making mistakes that ESLint will catch.
+> 💡 **[ESLint](http://eslint.org)** 用來處理 ES6 的 linter。 linter 會給你程式碼格式的建議，強迫你和你的團隊在程式碼當中有一致的風格。同時也是一個學習 JavaScript 的好方法，因為你寫錯文法時， ESlint 都會抓到並且提醒你。
 
-ESLint works with *rules*, and there are [many of them](http://eslint.org/docs/rules/). Instead of configuring the rules we want for our code ourselves, we will use the config created by Airbnb. This config uses a few plugins, so we need to install those as well.
+ESLint 透過 *rules* 運作，ESlint 有[許多規則](http://eslint.org/docs/rules/)，我們會使用 Airbnb 做出來的設置 (config)，而不會自己一條一條去設定。 Airbnb 的設置會用到不少插件(plugins)，我們需要將這些插件安裝好。
+
 
 Check out Airbnb's most recent [instructions](https://www.npmjs.com/package/eslint-config-airbnb) to install the config package and all its dependencies correctly. As of 2017-02-03, they recommend using the following command in your terminal:
 
