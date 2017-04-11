@@ -46,7 +46,7 @@ http.listen(WEB_PORT, () => {
 
 特別注意如果要讓 Socket.IO 正常運作，你需要用 `http` 的 `Server` 來聽 (`listen`) 傳進來的 Web 請求，而不是 Express 的 `app`。不過這其實不會太麻煩，因為所有跟 Websocket 有關的細節都寫在另一個叫 `setUpSocket` 的檔案裡。
 
-- 將下列常數加到 `src/shared/config.js` 裡：
+- 在檔案 `src/shared/config.js` 裡加入下列常數：
 
 ```js
 export const IO_CONNECT = 'connect'
