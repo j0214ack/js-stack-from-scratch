@@ -1,16 +1,16 @@
 # 07 - Socket.IO
 
-Code for this chapter available [here](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io).
+本章節的程式碼在[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io)。
 
-> 💡 **[Socket.IO](https://github.com/socketio/socket.io)** is a library to easily deal with Websockets. It provides a convenient API and fallback for browsers that don't support Websockets.
+> 💡 **[Socket.IO](https://github.com/socketio/socket.io)** 是個用來輕鬆操作 Websocket 的函式庫，提供方便的 API 以及作為不支援 Websocket 的瀏覽器的替代方案。
 
-In this chapter, we are going to set up a basic message exchange between the client and the server. In order to not add more pages and components – which would be unrelated to the core feature we're interested in here – we are going to make this exchange happen in the browser console. No UI stuff in this chapter.
+本章節中，我們將實作基本的客戶端與伺服器之間訊息交換範例。為了避免添加過多不重要的頁面與網頁元素，本章節不呈現任何UI，我們僅使用瀏覽器的 Console 視窗來展示功能。
 
-- Run `yarn add socket.io socket.io-client`
+- 在終端機執行 `yarn add socket.io socket.io-client`
 
-## Server-side
+## 伺服器端
 
-- Edit your `src/server/index.js` like so:
+- 將 `src/server/index.js` 改成以下內容:
 
 ```js
 // @flow
@@ -44,9 +44,9 @@ http.listen(WEB_PORT, () => {
 })
 ```
 
-Note that in order for Socket.IO to work, you need to use `Server` from `http` to `listen` to incoming requests, and not the Express `app`. Fortunately, that doesn't change much of the code. All the Websocket details are externalized in a different file, called with `setUpSocket`.
+特別注意如果要讓 Socket.IO 正常運作，你需要用 `http` 的 `Server` 來聽 (`listen`) 傳進來的 Web 請求，而不是 Express 的 `app`。不過這其實不會太麻煩，因為所有跟 Websocket 有關的細節都寫在另一個叫 `setUpSocket` 的檔案裡。
 
-- Add the following constants to `src/shared/config.js`:
+- 將下列常數加到 `src/shared/config.js` 裡：
 
 ```js
 export const IO_CONNECT = 'connect'
