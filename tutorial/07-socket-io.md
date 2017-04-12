@@ -56,11 +56,11 @@ export const IO_CLIENT_JOIN_ROOM = 'IO_CLIENT_JOIN_ROOM'
 export const IO_SERVER_HELLO = 'IO_SERVER_HELLO'
 ```
 
-These are the *type of messages* your client and your server will exchange. I suggest prefixing them with either `IO_CLIENT` or `IO_SERVER` to make it clearer *who* is sending the message. Otherwise, things can get pretty confusing when you have a lot of message types.
+這些是你的伺服器與客戶端會交換的*訊息類別*。我建議在各類別前面加上 `IO_CLIENT` 或 `IO_SERVER` 以區別訊息由*誰*送出，否則訊息類別變多時很容易搞不清楚。
 
-As you can see, we have a `IO_CLIENT_JOIN_ROOM`, because for the sake of demonstration, we are going to make clients join a room (like a chatroom). Rooms are useful to broadcast messages to specific groups of users.
+現在我們有個類別叫作 `IO_CLIENT_JOIN_ROOM` 是因為在展示成果時，我們會讓所有客戶端加入一個像聊天室一樣的房間 (Room)。這種房間很適合用來將訊息傳給特定使用者群組。
 
-- Create a `src/server/socket.js` file containing:
+- 建立檔案 `src/server/socket.js` 並貼上以下內容:
 
 ```js
 // @flow
@@ -101,27 +101,29 @@ const setUpSocket = (io: Object) => {
 export default setUpSocket
 ```
 
-Okay, so in this file, we implement *how our server should react when clients connect and send messages to it*:
+現在我們在這個檔案裡實作了*客戶端連上伺服器時該有什麼動作，以及如何傳訊息給客戶端*。
 
-- When the client connects, we log it in the server console, and get access to the `socket` object, which we can use to communicate back with that client.
-- When a client sends `IO_CLIENT_JOIN_ROOM`, we make it join the `room` it wants. Once it has joined a room, we send 3 demo messages: 1 message to every user, 1 message to users in that room, 1 message to that client only.
-- When the client sends `IO_CLIENT_HELLO`, we log its message in the server console.
-- When the client disconnects, we log it as well.
+- 客戶端連上伺服器時，我們在伺服器的 Console 輸出相關通知，並拿到 `socket` 這個物件。我們將用 `socket` 來和對應的客戶端溝通。
+- 當客戶端送一個 `IO_CLIENT_JOIN_ROOM` 訊息過來時，我們把他加入他想去的那個 `room`。進入房間後，我們同時送出 3 種展示用的訊息：給所有使用者的、給那個房間的使用者以及單獨給那個新使用者的。
+- 當客戶端送一個 `IO_CLIENT_HELLO` 訊息過來時，我們在伺服器的 Console 輸出他送來的訊息。
+- 當客戶端離線時，我們也在伺服器 Console 輸出這件事。
 
-## Client-side
+## 客戶端
 
+客戶端其實也差不多。
 The client-side of things is going to look very similar.
 
-- Edit `src/client/index.jsx` like so:
+- 在檔案 `src/client/index.jsx` 中加入這兩行:
 
 ```js
 // [...]
 import setUpSocket from './socket'
 
-// [at the very end of the file]
+// [檔案的最下面]
 setUpSocket(store)
 ```
 
+現在我們把 Redux store 傳給 `setUpSocket`，如此一來任何從伺服器傳過來的 Websocket 訊息都應該改變客戶端 Redux 的狀態
 As you can see, we pass the Redux store to `setUpSocket`. This way whenever a Websocket message coming from the server should alter the client's Redux state, we can `dispatch` actions. We are not going to `dispatch` anything in this example though.
 
 - Create a `src/client/socket.js` file containing:
