@@ -2,7 +2,7 @@
 
 本章的程式碼可以在 [這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/01-node-yarn-package-json) 取得
 
-在這一部分，我們將會把 Node, Yarn 還有基本的的 `package.json` 檔案設定好，並且試著使用一個套件
+本章中，我們將會把 Node, Yarn 還有基本的的 `package.json` 檔案設定好，並且試著使用一個套件
 
 ## Node
 
@@ -134,7 +134,7 @@ console.log(redHexa)
 
 恭喜你！你剛剛安裝並且使用了一個套件！
 
-`color` 只是在本段落示範用的簡單套件。我們以後不會再需要它了，所以你可以移除它：
+`color` 只是在這一節示範用的簡單套件。我們以後不會再需要它了，所以你可以移除它：
 
 - 執行 `yarn remove color`
 
@@ -146,6 +146,6 @@ console.log(redHexa)
 
 **Dev Dependencies** 是你在開發的時候會用到的函式庫，例如： Webpack、SASS、linters、測試框架等等。透過 `yarn add --dev [套件名稱]` 安裝。
 
-下一段落: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](02-babel-es6-eslint-flow-jest-husky.md#readme)
+下一章: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](02-babel-es6-eslint-flow-jest-husky.md#readme)
 
-回到 [內容目錄](https://github.com/verekia/js-stack-from-scratch#內容目錄).
+回到 [目錄](https://github.com/verekia/js-stack-from-scratch#目錄).

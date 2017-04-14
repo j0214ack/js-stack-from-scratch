@@ -1,10 +1,10 @@
 # 05 - Redux, Immutable, and Fetch
 
-本章節的程式碼[點此](https://github.com/verekia/js-stack-walkthrough/tree/master/05-redux-immutable-fetch)。
+本章的程式碼[點此](https://github.com/verekia/js-stack-walkthrough/tree/master/05-redux-immutable-fetch)。
 
-在這個章節，我們將會使用 React 和 Redux 來製作一個簡單的應用程式。這個應用程式會包含一則訊息和一個按鈕。當按下按鈕時，訊息內容便會改變。
+本章中，我們將會使用 React 和 Redux 來製作一個簡單的應用程式。這個應用程式會包含一則訊息和一個按鈕。當按下按鈕時，訊息內容便會改變。
 
-開始之前，讓我們先認識 ImmutableJS。雖然它與 React 和 Redux 無關，但我們會在這個章節使用到。
+開始之前，讓我們先認識 ImmutableJS。雖然它與 React 和 Redux 無關，但我們會在這一節使用到。
 
 ## ImmutableJS
 
@@ -646,6 +646,6 @@ test('handle SAY_HELLO_ASYNC_FAILURE', () => {
 
 🏁 執行 `yarn test`。畫面應該會是一片綠。
 
-下一章節：[06 - React Router, Server-Side Rendering, Helmet](06-react-router-ssr-helmet.md#readme)
+下一章：[06 - React Router, Server-Side Rendering, Helmet](06-react-router-ssr-helmet.md#readme)
 
 回到 [上一章](04-webpack-react-hmr.md#readme)，或是回 [目錄](https://github.com/verekia/js-stack-from-scratch#table-of-contents)。

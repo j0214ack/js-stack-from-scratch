@@ -1,6 +1,6 @@
 # 04 - Webpack, React, 以及 Hot Module Replacement
 
-本章節的程式碼 [點此](https://github.com/verekia/js-stack-walkthrough/tree/master/04-webpack-react-hmr)。
+本章的程式碼 [點此](https://github.com/verekia/js-stack-walkthrough/tree/master/04-webpack-react-hmr)。
 
 ## Webpack
 
@@ -284,6 +284,6 @@ if (module.hot) {
 
 🏁 如果你還在執行 `yarn dev:wds` 這個行程，重新執行它。打開 `localhost:8000`，在瀏覽器開發者工具中的 Console 分頁你應該會看到一些關於 HMR 的 logs。回去修改檔案 `src/client/app.jsx`，幾秒鐘後，不用經過全頁重整的過程你的改動應該就會反映到瀏覽器上。
 
-下一章節：[05 - Redux, Immutable, Fetch](05-redux-immutable-fetch.md#readme)
+下一章：[05 - Redux, Immutable, Fetch](05-redux-immutable-fetch.md#readme)
 
-回到 [上一章](03-express-nodemon-pm2.md#readme)，或是回 [目錄](../README.md#內容目錄)。
+回到 [上一章](03-express-nodemon-pm2.md#readme)，或是回 [目錄](../README.md#目錄)。

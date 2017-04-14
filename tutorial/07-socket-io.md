@@ -1,10 +1,10 @@
 # 07 - Socket.IO
 
-這一節的程式碼在[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io)。
+本章的程式碼在[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io)。
 
 > 💡 **[Socket.IO](https://github.com/socketio/socket.io)** 是個用來輕鬆操作 Websocket 的函式庫，提供方便的 API 以及作為不支援 Websocket 的瀏覽器的替代方案。
 
-這一節中，我們將實作基本的客戶端與伺服器之間訊息交換範例。為了避免添加過多不重要的頁面與網頁元素，本章節不呈現任何UI，我們僅使用瀏覽器的 Console 視窗來展示功能。
+本章中，我們將實作基本的客戶端與伺服器之間訊息交換範例。為了避免添加過多不重要的頁面與網頁元素，這一節不呈現任何UI，我們僅使用瀏覽器的 Console 視窗來展示功能。
 
 - 在終端機執行 `yarn add socket.io socket.io-client`
 
@@ -172,6 +172,6 @@ export default setUpSocket
 
 🏁 在終端機執行 `yarn start` 和 `yarn dev:wds`， 在瀏覽器中連到 `http://localhost:8000`，然後打開瀏覽器的 Console 視窗，同時注意 Express 伺服器的終端機視窗，應該可以看到你的客戶端與伺服器透過 Websocket 的溝通情形。
 
-下一節: [08 - Bootstrap, JSS](08-bootstrap-jss.md#readme)
+下一章: [08 - Bootstrap, JSS](08-bootstrap-jss.md#readme)
 
-回到 [上一節](06-react-router-ssr-helmet.md#readme) 或 [內容目錄](https://github.com/verekia/js-stack-from-scratch#內容目錄).
+回到 [上一章](06-react-router-ssr-helmet.md#readme) 或 [目錄](https://github.com/verekia/js-stack-from-scratch#目錄).
