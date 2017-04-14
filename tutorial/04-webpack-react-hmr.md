@@ -157,7 +157,7 @@ console.log(`Server running on port ${WEB_PORT} ${isProd ? '(production)' :
 
 - 回到終端機，輸入 Ctrl+C 把先前指令執行的行程關掉。接著再執行 `yarn prod:build`，以及 `yarn prod:start`。打開網址 `http://localhost:8000/` ，你會看到 "Hello Webpack!"。在 Chrome 開發者工具中的 Sources 分頁，你應該會看到來源來自 `localhost:8000/` 的檔案 `static/js/bundle.js`，並且已經沒有來自 `webpack://` 的檔案。點選 `bundle.js` 確認程式碼有被最小化。最後，執行 `yarn prod:stop`。
 
-做得好！我知道這些可能有點複雜，你可以稍微喘口氣，下一個小節會比較簡單。
+做得好！我知道這些可能有點複雜，你可以稍微喘口氣，下一個章節會比較簡單。
 
 **注意**：我建議至少同時打開 3 個終端機畫面。一個給 Express server，一個給 Webpack Dev Server，一個給 Git、測試任務或是其他像安裝套件的指令。理想上，你應該將你的終端機視窗分割成多個 pane，如此方便一覽全局。
 
@@ -165,7 +165,7 @@ console.log(`Server running on port ${WEB_PORT} ${isProd ? '(production)' :
 
 > 💡 **[React](https://facebook.github.io/react/)** 是 Facebook 創造用來打造使用者介面(user interface)的一個函示庫。它使用 **[JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)** 語法來表示 HTML 元素並且借力於 JavaScript 的強大功能。
 
-在這個小節，我們將會用 React 和 JSX 呈現出一些文字。
+在這個章節，我們將會用 React 和 JSX 呈現出一些文字。
 
 首先，讓我們安裝 React 和 ReactDOM：
 

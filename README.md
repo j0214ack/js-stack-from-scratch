@@ -16,7 +16,7 @@
 [![Webpack](/img/webpack-padded-90.png)](https://webpack.github.io/)
 [![Bootstrap](/img/bootstrap-padded-90.png)](http://getbootstrap.com/)
 
-(譯註：此為繁體中文翻譯，我會盡力更新，可到原作者的 [repo](https://github.com/verekia/js-stack-from-scratch) 查看最新版本，若您希望加入一起翻譯中文，或者有找到錯字或用語修正等等，可以 fork 此 repo 並且發送 pull request 給我。若想要翻譯整個小節可以到這個 [issue](https://github.com/j0214ack/js-stack-from-scratch/issues) 留言認領，避免大家重複翻譯。)
+(譯註：此為繁體中文翻譯，我會盡力更新，可到原作者的 [repo](https://github.com/verekia/js-stack-from-scratch) 查看最新版本，若您希望加入一起翻譯中文，或者有找到錯字或用語修正等等，可以 fork 此 repo 並且發送 pull request 給我。若想要翻譯整個章節可以到這個 [issue](https://github.com/j0214ack/js-stack-from-scratch/issues) 留言認領，避免大家重複翻譯。)
 
 中文翻譯致謝：
 （目前沒人唷！歡迎大家一起來幫忙。）
