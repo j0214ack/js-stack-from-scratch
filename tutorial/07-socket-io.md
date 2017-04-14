@@ -1,10 +1,10 @@
 # 07 - Socket.IO
 
-本章節的程式碼在[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io)。
+這一節的程式碼在[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/07-socket-io)。
 
 > 💡 **[Socket.IO](https://github.com/socketio/socket.io)** 是個用來輕鬆操作 Websocket 的函式庫，提供方便的 API 以及作為不支援 Websocket 的瀏覽器的替代方案。
 
-本章節中，我們將實作基本的客戶端與伺服器之間訊息交換範例。為了避免添加過多不重要的頁面與網頁元素，本章節不呈現任何UI，我們僅使用瀏覽器的 Console 視窗來展示功能。
+這一節中，我們將實作基本的客戶端與伺服器之間訊息交換範例。為了避免添加過多不重要的頁面與網頁元素，本章節不呈現任何UI，我們僅使用瀏覽器的 Console 視窗來展示功能。
 
 - 在終端機執行 `yarn add socket.io socket.io-client`
 
@@ -110,8 +110,7 @@ export default setUpSocket
 
 ## 客戶端
 
-客戶端其實也差不多。
-The client-side of things is going to look very similar.
+客戶端的程式碼看起來其實也差不多。
 
 - 在檔案 `src/client/index.jsx` 中加入這兩行:
 
@@ -123,10 +122,9 @@ import setUpSocket from './socket'
 setUpSocket(store)
 ```
 
-現在我們把 Redux store 傳給 `setUpSocket`，如此一來任何從伺服器傳過來的 Websocket 訊息都應該改變客戶端 Redux 的狀態
-As you can see, we pass the Redux store to `setUpSocket`. This way whenever a Websocket message coming from the server should alter the client's Redux state, we can `dispatch` actions. We are not going to `dispatch` anything in this example though.
+現在我們把 Redux store 傳給 `setUpSocket`，如此一來無論從伺服器傳過來的 Websocket 訊息什麼時候會改變客戶端 Redux 的狀態，我們都可以 `dispatch` 這些動作，不過在這個範例裡我們不會 `dispatch` 任何東西。
 
-- Create a `src/client/socket.js` file containing:
+- 建立檔案 `src/client/socket.js` 並貼上以下內容:
 
 ```js
 // @flow
@@ -165,15 +163,15 @@ const setUpSocket = (store: Object) => {
 export default setUpSocket
 ```
 
-What happens here should not be surprising if you understood well what we did on the server:
+如果你清楚了解我們在伺服器上做的事情，這些結果看起來就再正常不過了。
 
-- As soon as the client is connected, we log it in the browser console and join the room `hello-1234` with a `IO_CLIENT_JOIN_ROOM` message.
-- We then send `Hello!` with a `IO_CLIENT_HELLO` message.
-- If the server sends us a `IO_SERVER_HELLO` message, we log it in the browser console.
-- We also log any disconnection.
+- 客戶端一連上伺服器，登入訊息會顯示在瀏覽器的 Console 視窗裡，並送出 `IO_CLIENT_JOIN_ROOM` 訊息以加入編號 `hello-1234` 的房間。
+- 然後用 `IO_CLIENT_HELLO` 訊息送出 `Hello!` 到伺服器。
+- 如果伺服器回送 `IO_SERVER_HELLO` 訊息給我們，也會顯示在瀏覽器的 Console 視窗裡。
+- 離線時也會顯示相關訊息。
 
-🏁 Run `yarn start` and `yarn dev:wds`, open `http://localhost:8000`. Then, open your browser console, and also look at the terminal of your Express server. You should see the Websocket communication between your client and server.
+🏁 在終端機執行 `yarn start` 和 `yarn dev:wds`， 在瀏覽器中連到 `http://localhost:8000`，然後打開瀏覽器的 Console 視窗，同時注意 Express 伺服器的終端機視窗，應該可以看到你的客戶端與伺服器透過 Websocket 的溝通情形。
 
-Next section: [08 - Bootstrap, JSS](08-bootstrap-jss.md#readme)
+下一節: [08 - Bootstrap, JSS](08-bootstrap-jss.md#readme)
 
-Back to the [previous section](06-react-router-ssr-helmet.md#readme) or the [table of contents](https://github.com/verekia/js-stack-from-scratch#table-of-contents).
+回到 [上一節](06-react-router-ssr-helmet.md#readme) 或 [內容目錄](https://github.com/verekia/js-stack-from-scratch#內容目錄).
