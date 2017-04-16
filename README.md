@@ -34,7 +34,7 @@
 本教學中有一大部分會使用到 React 。如果你是初學者，並且只是想要學習 React，或者有人剛加入使用 React 的團隊並且需要一個學習的空間，我推薦用  [create-react-app](https://github.com/facebookincubator/create-react-app) 以預設好的設定迅速幫助您建立起 React 環境。在這個教學裡你不會使用預設設定，因為我希望您了解所有在檯面下發生的事情。
 
 
-每章節都有程式碼範例，你可以透過 `yarn && yarn start` 執行這些範例。但我會建議您跟著 **一步一步的指引** 自己從零開始撰寫。
+每一節都有程式碼範例，你可以透過 `yarn && yarn start` 執行這些範例。但我會建議您跟著 **一步一步的指引** 自己從零開始撰寫。
 
 
 最終的程式碼可以在 [JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate) 和 [releases](https://github.com/verekia/js-stack-from-scratch/releases) 取得。 也可以參考 [live demo](https://js-stack.herokuapp.com/)。
@@ -43,7 +43,7 @@
 本教學可以在 Linux, macOS, and Windows 運作。
 
 
-## 內容目錄
+## 目錄
 
 [01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json.md#readme)
 
@@ -69,7 +69,7 @@
 
 ## 翻譯
 
-如果您希望增加您的翻譯，請從閱讀[翻譯建議](/how-to-translate.md) 開始
+如果您希望加入您的翻譯版本，請從閱讀[翻譯建議](/how-to-translate.md) 開始
 
 ### V2
 

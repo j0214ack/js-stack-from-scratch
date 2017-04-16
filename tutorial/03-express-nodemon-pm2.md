@@ -2,7 +2,7 @@
 
 本章的原始碼可以從[這裡](https://github.com/verekia/js-stack-walkthrough/tree/master/03-express-nodemon-pm2)取得
 
-在這個階段，我們會建立一個伺服器來呈現我們的網頁應用程式。我們也會替這個伺服器設定好開發環境以及正式環境。
+本章中，我們會建立一個伺服器來呈現我們的網頁應用程式。我們也會替這個伺服器設定好開發環境以及正式環境。
 
 
 ## Express
@@ -162,7 +162,7 @@ const template = html`
 在 `dev:start` 裡的 `--ignore lib` 旗標，是當 `lib` 資料夾產生變動的時候，讓伺服器 *不要* 重新啟動的指令。你現在還沒有這個資料夾，我們會在本章的下一個段落產生它，到時候這就會看起來比較有道理一點了。 Nodemon 通常會執行 `node` 可執行檔。但既然我們用的是 Babel ，我們會跟 Nodemon 說請使用 `babel-node`。如此才能看得懂 ES6/Flow 程式碼。
 
 
-🏁 執行 `yarn start` 而且打開 `localhost:8000`。試著改變 `src/shared/config.js` 裡的 `APP_NAME` 常數，這應該會觸發伺服器重新啟動，你可以在終端機裡看到。重新整理頁面以看見更新後的標題。請注意，伺服器自動重新啟動跟 *熱模組切換* (HMR, hot module replacement) 是不同的，後者是當頁面中的組件變更的時候會即時在頁面上更新。現在我們仍需要手動重整頁面，不過至少我們不需要關掉程序在手動重新開起來看到更動了。熱模組切換會在下一章節裡介紹。
+🏁 執行 `yarn start` 而且打開 `localhost:8000`。試著改變 `src/shared/config.js` 裡的 `APP_NAME` 常數，這應該會觸發伺服器重新啟動，你可以在終端機裡看到。重新整理頁面以看見更新後的標題。請注意，伺服器自動重新啟動跟 *熱模組切換* (HMR, hot module replacement) 是不同的，後者是當頁面中的組件變更的時候會即時在頁面上更新。現在我們仍需要手動重整頁面，不過至少我們不需要關掉程序在手動重新開起來看到更動了。熱模組切換會在下一章裡介紹。
 
 ## PM2
 
@@ -223,4 +223,4 @@ Babel 的一個主要功能是將 ES6 程式碼的資料夾(通常是 `src`)轉�
 
 下一章： [04 - Webpack, React, HMR](04-webpack-react-hmr.md#readme)
 
-回到 [前一章](02-babel-es6-eslint-flow-jest-husky.md#readme) 或回到 [內容目錄](https://github.com/verekia/js-stack-from-scratch#內容目錄).
+回到 [上一章](02-babel-es6-eslint-flow-jest-husky.md#readme) 或回到 [目錄](https://github.com/verekia/js-stack-from-scratch#目錄).
