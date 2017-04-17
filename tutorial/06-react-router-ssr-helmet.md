@@ -432,7 +432,7 @@ const store = createStore(combineReducers(
 
 > 💡 **[React Helmet](https://github.com/nfl/react-helmet)**: 一個替 React 應用將內容注入到 `head` 部分的函式庫。在用戶端或伺服器端都可以用。
 
-我故意在標題請你寫 `FIX ME` ，為了強調即使我們已經在做伺服器端長線，但我沒還沒將 `title` 正確地填寫（或者任何在 `head` 裡會出現的標籤，視不同頁面的需要。）
+我故意在標題請你寫 `FIX ME` ，為了強調即使我們已經在做伺服器端呈現，但我沒還沒將 `title` 正確地填寫（或者任何在 `head` 裡會出現的標籤，視不同頁面的需要。）
 
 - 執行 `yarn add react-helmet`
 
