@@ -80,7 +80,7 @@ import * as Immutable from 'immutable'
 import { SAY_HELLO } from '../action/hello'
 
 const initialState = Immutable.fromJS({
-  message: '初始 reducer 訊息',
+  message: 'Initial reducer message',
 })
 
 const helloReducer = (state: Object = initialState, action: { type: string, payload: any }) => {
@@ -421,8 +421,8 @@ import {
 } from '../action/hello'
 
 const initialState = Immutable.fromJS({
-  message: '初始 reducer 訊息',
-  messageAsync: '初始 reducer 非同步呼叫訊息',
+  message: 'Initial reducer message',
+  messageAsync: 'Initial reducer message for async call',
 })
 
 const helloReducer = (state: Object = initialState, action: { type: string, payload: any }) => {
@@ -430,11 +430,11 @@ const helloReducer = (state: Object = initialState, action: { type: string, payl
     case SAY_HELLO:
       return state.set('message', action.payload)
     case SAY_HELLO_ASYNC_REQUEST:
-      return state.set('messageAsync', '讀取中...')
+      return state.set('messageAsync', 'Loading...')
     case SAY_HELLO_ASYNC_SUCCESS:
       return state.set('messageAsync', action.payload)
     case SAY_HELLO_ASYNC_FAILURE:
-      return state.set('messageAsync', '收不到訊息，檢查你的連線。')
+      return state.set('messageAsync', 'No message received, please check your connection')
     default:
       return state
   }
@@ -558,13 +558,13 @@ afterEach(() => {
 })
 
 test('sayHelloAsync success', () => {
-  fetchMock.get(helloEndpointRoute(666), { serverMessage: '非同步呼叫成功' })
+  fetchMock.get(helloEndpointRoute(666), { serverMessage: 'Async hello success' })
   const store = mockStore()
   return store.dispatch(sayHelloAsync(666))
     .then(() => {
       expect(store.getActions()).toEqual([
         sayHelloAsyncRequest(),
-        sayHelloAsyncSuccess('非同步呼叫成功'),
+        sayHelloAsyncSuccess('Async hello success'),
       ])
     })
 })
